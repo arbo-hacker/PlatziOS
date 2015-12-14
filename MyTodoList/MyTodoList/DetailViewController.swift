@@ -10,7 +10,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    var item : String? = ""
+    var item : TodoItem?
+    var todoList : TodoList?
     static let FORMAT_DATE = "dd/MM/yyyy HH:mm"
 
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -24,7 +25,10 @@ class DetailViewController: UIViewController {
     }
     @IBAction func addNotification(sender: UIBarButtonItem) {
         if let dateString = dateLabel.text, date = parseDate(dateString ) {
-            scheduleNotificaiton(item!, date: date)
+            self.item!.dueDate = date
+            self.todoList?.saveItems()
+            scheduleNotificaiton(item!.todo!, date: date)
+            self.navigationController?.popViewControllerAnimated(true)
         }
     }
     func registerGestureRecognizer(){
@@ -71,11 +75,23 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        descriptionLabel.text = item
+        showItem()
+        
         registerGestureRecognizer()
         // Do any additional setup after loading the view.
     }
 
+    func showItem(){
+        descriptionLabel.text = self.item!.todo
+        if let date = self.item?.dueDate{
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = DetailViewController.FORMAT_DATE
+            dateLabel.text = formatter.stringFromDate(date)
+        }
+        if let img = item!.image {
+            self.imageView.image = img
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -98,6 +114,8 @@ extension DetailViewController : UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
             self.imageView.image = image
+            self.item!.image = image
+            self.todoList!.saveItems()
         }
         self.dismissViewControllerAnimated(true, completion: nil)
     }

@@ -16,12 +16,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
     let todoList = TodoList()
     static let MAX_TEXT_SIZE = 35
     
-    var selectedItem : String = ""
+    var selectedItem : TodoItem?
     
     @IBAction func addButtonPressed(sender: UIButton){
-        if let item = itemTextFiled.text{
-            print("Agregando un elemento a la lista: \(item)")
-            todoList.addItem(item)
+        if let itemString = itemTextFiled.text{
+            print("Agregando un elemento a la lista: \(itemString)")
+            let todoItem = TodoItem()
+            todoItem.todo = itemString
+            todoList.addItem(todoItem)
             itemTextFiled.text = ""
             tableView.reloadData()
             itemTextFiled!.resignFirstResponder()
@@ -46,6 +48,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let detailViewController = segue.destinationViewController as? DetailViewController {
             detailViewController.item = self.selectedItem
+            detailViewController.todoList = self.todoList
         }
     }
 

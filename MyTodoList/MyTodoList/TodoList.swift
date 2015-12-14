@@ -9,7 +9,8 @@
 import UIKit
 
 class TodoList: NSObject {
-    var items : [String] = []
+    var items : [TodoItem] = []
+    static let FILE_NAME = "todolist.plist"
     private var _fileURL : NSURL?
     
     override init() {
@@ -22,7 +23,7 @@ class TodoList: NSObject {
         let documentDirectoryURLs = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         
         let documentDirectoryURL = documentDirectoryURLs.first!
-        return documentDirectoryURL.URLByAppendingPathComponent("todolist.items")
+        return documentDirectoryURL.URLByAppendingPathComponent(TodoList.FILE_NAME)
     }()
     
     private var fileURL2 : NSURL  {
@@ -34,7 +35,7 @@ class TodoList: NSObject {
                 let documentDirectoryURLs = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
                 
                 let documentDirectoryURL = documentDirectoryURLs.first!
-                _fileURL = documentDirectoryURL.URLByAppendingPathComponent("todolist.items")
+                _fileURL = documentDirectoryURL.URLByAppendingPathComponent(TodoList.FILE_NAME)
                 return _fileURL!
             }
         }
@@ -42,7 +43,9 @@ class TodoList: NSObject {
     
     func saveItems(){
         let itemArray = items as NSArray
-        if itemArray.writeToURL(fileURL2, atomically: true){
+        
+        //if itemArray.writeToURL(fileURL2, atomically: true){
+        if NSKeyedArchiver.archiveRootObject(itemArray, toFile: self.fileURL2.path!){
             print("Se guardo con existo")
         }else{
             print("No se pudo guardar de manera correcta")
@@ -50,17 +53,17 @@ class TodoList: NSObject {
     }
     
     func loadItems(){
-        if let itemArray = NSArray(contentsOfURL: fileURL2) as? [String] {
-            items = itemArray
+        if let itemArray = NSKeyedUnarchiver.unarchiveObjectWithFile(self.fileURL2.path!) as? [TodoItem]{ //NSArray(contentsOfURL: fileURL2) as? [String] {
+            self.items = itemArray
         }
     }
     
-    func addItem(item : String){
+    func addItem(item : TodoItem){
         items.append(item)
         saveItems()
     }
     
-    func getItem ( index : Int ) -> String {
+    func getItem ( index : Int ) -> TodoItem {
         return items[index]
     }
 
@@ -75,7 +78,7 @@ extension TodoList : UITableViewDataSource{
         let item = items[indexPath.row]
         
         if let etiqueta = cell.textLabel {
-            etiqueta.text = item
+            etiqueta.text = item.todo
         }
         return cell
     }
