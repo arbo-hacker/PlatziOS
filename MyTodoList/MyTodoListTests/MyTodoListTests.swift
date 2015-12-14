@@ -33,4 +33,8 @@ class MyTodoListTests: XCTestCase {
         }
     }
     
+    func testAlgo(){
+        print("Hola")
+    }
+    
 }

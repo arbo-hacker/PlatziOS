@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		211AEBD61C1BA8B10089CF38 /* TodoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211AEBD51C1BA8B10089CF38 /* TodoList.swift */; };
 		21CA29841C19C42B00398E21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CA29831C19C42B00398E21 /* AppDelegate.swift */; };
 		21CA29861C19C42B00398E21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CA29851C19C42B00398E21 /* ViewController.swift */; };
 		21CA29891C19C42B00398E21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21CA29871C19C42B00398E21 /* Main.storyboard */; };
@@ -14,6 +15,7 @@
 		21CA298E1C19C42B00398E21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21CA298C1C19C42B00398E21 /* LaunchScreen.storyboard */; };
 		21CA29991C19C42C00398E21 /* MyTodoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CA29981C19C42C00398E21 /* MyTodoListTests.swift */; };
 		21CA29A41C19C42C00398E21 /* MyTodoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CA29A31C19C42C00398E21 /* MyTodoListUITests.swift */; };
+		21ED3B9E1C1E510D005EE363 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ED3B9D1C1E510D005EE363 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		211AEBD51C1BA8B10089CF38 /* TodoList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoList.swift; sourceTree = "<group>"; };
 		21CA29801C19C42B00398E21 /* MyTodoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyTodoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21CA29831C19C42B00398E21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21CA29851C19C42B00398E21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		21CA299F1C19C42C00398E21 /* MyTodoListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyTodoListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		21CA29A31C19C42C00398E21 /* MyTodoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoListUITests.swift; sourceTree = "<group>"; };
 		21CA29A51C19C42C00398E21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21ED3B9D1C1E510D005EE363 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +101,14 @@
 		21CA29821C19C42B00398E21 /* MyTodoList */ = {
 			isa = PBXGroup;
 			children = (
+				21ED3B9D1C1E510D005EE363 /* DetailViewController.swift */,
 				21CA29831C19C42B00398E21 /* AppDelegate.swift */,
 				21CA29851C19C42B00398E21 /* ViewController.swift */,
 				21CA29871C19C42B00398E21 /* Main.storyboard */,
 				21CA298A1C19C42B00398E21 /* Assets.xcassets */,
 				21CA298C1C19C42B00398E21 /* LaunchScreen.storyboard */,
 				21CA298F1C19C42B00398E21 /* Info.plist */,
+				211AEBD51C1BA8B10089CF38 /* TodoList.swift */,
 			);
 			path = MyTodoList;
 			sourceTree = "<group>";
@@ -259,8 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				211AEBD61C1BA8B10089CF38 /* TodoList.swift in Sources */,
 				21CA29861C19C42B00398E21 /* ViewController.swift in Sources */,
 				21CA29841C19C42B00398E21 /* AppDelegate.swift in Sources */,
+				21ED3B9E1C1E510D005EE363 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +493,7 @@
 				21CA29AA1C19C42C00398E21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		21CA29AB1C19C42C00398E21 /* Build configuration list for PBXNativeTarget "MyTodoListTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +502,7 @@
 				21CA29AD1C19C42C00398E21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		21CA29AE1C19C42C00398E21 /* Build configuration list for PBXNativeTarget "MyTodoListUITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +511,7 @@
 				21CA29B01C19C42C00398E21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -9,6 +9,8 @@
 import XCTest
 
 class MyTodoListUITests: XCTestCase {
+    
+    //var app : XCUIApplication = XCUIApplication()
         
     override func setUp() {
         super.setUp()
@@ -19,6 +21,8 @@ class MyTodoListUITests: XCTestCase {
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         XCUIApplication().launch()
+        //addTask(XCUIApplication())
+        
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
@@ -28,9 +32,51 @@ class MyTodoListUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testAddTask(){
+        let app = XCUIApplication()
+        for _ in 1...20{
+            let addTaskTextField = app.textFields["Add Task"]
+            addTaskTextField.tap()
+            let nombreTarea = randomId("comprar comida")
+            addTaskTextField.typeText(nombreTarea)
+            let boton = app.buttons["Save"]
+            boton.tap()
+        }
+    }
+    func testAgregarVariasTareas(){
+        
+        let app = XCUIApplication()
+        let addTaskTextField = app.textFields["Add Task"]
+        addTaskTextField.tap()
+        addTaskTextField.typeText("hola")
+        
+        let saveButton = app.buttons["Save"]
+        saveButton.tap()
+        addTaskTextField.tap()
+        addTaskTextField.typeText("como")
+        saveButton.tap()
+        addTaskTextField.tap()
+        addTaskTextField.typeText("estas")
+        saveButton.tap()
+        addTaskTextField.tap()
+        addTaskTextField.typeText("bien")
+        saveButton.tap()
+        addTaskTextField.tap()
+        addTaskTextField.typeText("y")
+        saveButton.tap()
+        addTaskTextField.tap()
+        addTaskTextField.typeText("tu")
+        saveButton.tap()
+        
+    }
+    
+    func addTask(){
+        print("HOLa")
+    }
+    
+    func randomId(tarea: String ) -> String {
+        let id = arc4random() % 20
+        return "\(tarea) \(String(id))"
     }
     
 }
