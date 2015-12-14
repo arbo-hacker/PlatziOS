@@ -115,7 +115,10 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4Ip-hn-c2T">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R4O-sQ-xl3">
+                                <rect key="frame" x="0.0" y="244" width="600" height="216"/>
+                            </imageView>
+                            <datePicker hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4Ip-hn-c2T">
                                 <rect key="frame" x="0.0" y="244" width="600" height="216"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="216" id="7Um-ul-cMW"/>
@@ -147,13 +150,19 @@
                             <constraint firstItem="oAg-df-CL7" firstAttribute="top" secondItem="Vkg-vL-Hwy" secondAttribute="bottom" id="2Nk-P7-Kpy"/>
                             <constraint firstAttribute="bottom" secondItem="9Kd-vf-mbz" secondAttribute="bottom" id="C5e-uB-OTV"/>
                             <constraint firstItem="9Kd-vf-mbz" firstAttribute="leading" secondItem="bUy-FD-JNM" secondAttribute="leading" id="G2W-kK-ikS"/>
+                            <constraint firstItem="4Ip-hn-c2T" firstAttribute="top" secondItem="oAg-df-CL7" secondAttribute="bottom" id="Gag-sp-iMY"/>
+                            <constraint firstItem="4Ip-hn-c2T" firstAttribute="height" secondItem="R4O-sQ-xl3" secondAttribute="height" id="Nyl-25-7AE"/>
                             <constraint firstAttribute="trailing" secondItem="oAg-df-CL7" secondAttribute="trailing" id="O7k-BJ-FR3"/>
                             <constraint firstAttribute="trailing" secondItem="4Ip-hn-c2T" secondAttribute="trailing" id="Qzn-ua-0jL"/>
+                            <constraint firstItem="R4O-sQ-xl3" firstAttribute="leading" secondItem="bUy-FD-JNM" secondAttribute="leading" id="XBm-8N-eoC"/>
                             <constraint firstItem="4Ip-hn-c2T" firstAttribute="top" secondItem="oAg-df-CL7" secondAttribute="bottom" id="cRa-I3-7gv"/>
                             <constraint firstItem="oAg-df-CL7" firstAttribute="height" secondItem="bUy-FD-JNM" secondAttribute="height" multiplier="0.3" id="car-UB-BKW"/>
+                            <constraint firstItem="4Ip-hn-c2T" firstAttribute="width" secondItem="R4O-sQ-xl3" secondAttribute="width" id="e7d-tY-VEN"/>
+                            <constraint firstItem="4Ip-hn-c2T" firstAttribute="leading" secondItem="bUy-FD-JNM" secondAttribute="leading" id="iJ1-n3-t7S"/>
                             <constraint firstItem="4Ip-hn-c2T" firstAttribute="leading" secondItem="bUy-FD-JNM" secondAttribute="leading" id="juC-pc-6ld"/>
                             <constraint firstAttribute="trailing" secondItem="9Kd-vf-mbz" secondAttribute="trailing" id="nta-Xh-oqO"/>
                             <constraint firstItem="oAg-df-CL7" firstAttribute="leading" secondItem="bUy-FD-JNM" secondAttribute="leading" id="qTT-6q-dx0"/>
+                            <constraint firstItem="R4O-sQ-xl3" firstAttribute="top" secondItem="oAg-df-CL7" secondAttribute="bottom" id="xZA-UX-5oA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="tSQ-5U-g4r">
@@ -165,7 +174,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="dateLabel" destination="6ua-2j-aGB" id="k0n-yb-HXH"/>
+                        <outlet property="datePicker" destination="4Ip-hn-c2T" id="1jv-1B-IGo"/>
                         <outlet property="descriptionLabel" destination="KwK-jb-0bq" id="XfL-5Q-vSY"/>
+                        <outlet property="imageView" destination="R4O-sQ-xl3" id="667-UU-NKr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SM6-UM-Zfj" userLabel="First Responder" sceneMemberID="firstResponder"/>

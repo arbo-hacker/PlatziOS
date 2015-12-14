@@ -16,6 +16,7 @@
 		21CA29991C19C42C00398E21 /* MyTodoListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CA29981C19C42C00398E21 /* MyTodoListTests.swift */; };
 		21CA29A41C19C42C00398E21 /* MyTodoListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CA29A31C19C42C00398E21 /* MyTodoListUITests.swift */; };
 		21ED3B9E1C1E510D005EE363 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ED3B9D1C1E510D005EE363 /* DetailViewController.swift */; };
+		21ED3BA01C1F15CD005EE363 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ED3B9F1C1F15CD005EE363 /* TodoItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		21CA29A31C19C42C00398E21 /* MyTodoListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTodoListUITests.swift; sourceTree = "<group>"; };
 		21CA29A51C19C42C00398E21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21ED3B9D1C1E510D005EE363 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		21ED3B9F1C1F15CD005EE363 /* TodoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				21CA298C1C19C42B00398E21 /* LaunchScreen.storyboard */,
 				21CA298F1C19C42B00398E21 /* Info.plist */,
 				211AEBD51C1BA8B10089CF38 /* TodoList.swift */,
+				21ED3B9F1C1F15CD005EE363 /* TodoItem.swift */,
 			);
 			path = MyTodoList;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21ED3BA01C1F15CD005EE363 /* TodoItem.swift in Sources */,
 				211AEBD61C1BA8B10089CF38 /* TodoList.swift in Sources */,
 				21CA29861C19C42B00398E21 /* ViewController.swift in Sources */,
 				21CA29841C19C42B00398E21 /* AppDelegate.swift in Sources */,

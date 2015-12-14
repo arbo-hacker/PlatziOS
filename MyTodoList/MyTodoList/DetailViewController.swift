@@ -15,17 +15,35 @@ class DetailViewController: UIViewController {
 
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var imageView: UIImageView!
     
     @IBAction func dateSelected(sender: UIDatePicker) {
         dateLabel.text = formatDate(sender.date)
+        toggleDatePicker()
     }
     @IBAction func addNotification(sender: UIBarButtonItem) {
         if let dateString = dateLabel.text, date = parseDate(dateString ) {
             scheduleNotificaiton(item!, date: date)
         }
     }
-    
+    func registerGestureRecognizer(){
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.numberOfTapsRequired = 1 // numero de toques en la pantalla
+        tapGestureRecognizer.numberOfTouchesRequired = 1 // numero de dedos en la pantalla
+        tapGestureRecognizer.addTarget(self, action: "toggleDatePicker")
+        self.dateLabel.addGestureRecognizer(tapGestureRecognizer)
+        self.dateLabel.userInteractionEnabled = true
+    }
+    func toggleDatePicker(){
+        self.imageView.hidden = self.datePicker.hidden
+        self.datePicker.hidden = !self.datePicker.hidden
+    }
     @IBAction func addImage(sender: UIBarButtonItem) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .PhotoLibrary
+        self.presentViewController(imagePickerController, animated: true, completion: nil)
     }
     func scheduleNotificaiton(message: String, date: NSDate) {
         let localNotification = UILocalNotification()
@@ -54,6 +72,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         descriptionLabel.text = item
+        registerGestureRecognizer()
         // Do any additional setup after loading the view.
     }
 
@@ -73,4 +92,13 @@ class DetailViewController: UIViewController {
     }
     */
 
+}
+
+extension DetailViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            self.imageView.image = image
+        }
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 }
