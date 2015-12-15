@@ -181,7 +181,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SM6-UM-Zfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1041" y="309"/>
+            <point key="canvasLocation" x="1111" y="334"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Yny-Fl-YuN">
@@ -192,7 +192,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="j7s-b9-Gq0"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="gmV-bB-fdo"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cfB-4N-Y4o" userLabel="First Responder" sceneMemberID="firstResponder"/>

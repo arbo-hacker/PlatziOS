@@ -28,8 +28,28 @@ class DetailViewController: UIViewController {
             self.item!.dueDate = date
             self.todoList?.saveItems()
             scheduleNotificaiton(item!.todo!, date: date)
+            var volver : Bool = true
+            API.save(item!, todoList: todoList!, responseBlock: { (error) -> Void in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    if let err = error {
+                        print(err)
+                        volver = false
+                        self.showError()
+                    }
+                })
+            })
+            if volver {
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+        }
+    }
+    func showError(){
+        let alert = UIAlertController(title: "Oops", message: "No pudimos guardar tus cambios, revista tu conexion a internet", preferredStyle: .Alert)
+        let action = UIAlertAction(title: "Ok", style: .Default) { _ in
             self.navigationController?.popViewControllerAnimated(true)
         }
+        alert.addAction(action)
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     func registerGestureRecognizer(){
         let tapGestureRecognizer = UITapGestureRecognizer()
@@ -40,8 +60,13 @@ class DetailViewController: UIViewController {
         self.dateLabel.userInteractionEnabled = true
     }
     func toggleDatePicker(){
-        self.imageView.hidden = self.datePicker.hidden
-        self.datePicker.hidden = !self.datePicker.hidden
+        //self.imageView.hidden = self.datePicker.hidden
+        //self.datePicker.hidden = !self.datePicker.hidden
+        if self.datePicker.hidden{
+            self.fadeInDatePicker()
+        }else{
+            self.fadeOutDatePicker()
+        }
     }
     @IBAction func addImage(sender: UIBarButtonItem) {
         let imagePickerController = UIImagePickerController()
@@ -78,7 +103,25 @@ class DetailViewController: UIViewController {
         showItem()
         
         registerGestureRecognizer()
+        addRegisterGestureRecognizerToImage()
         // Do any additional setup after loading the view.
+    }
+    func addRegisterGestureRecognizerToImage(){
+        let tapGestureRecognizer = UITapGestureRecognizer()
+        tapGestureRecognizer.numberOfTapsRequired = 1 // numero de toques en la pantalla
+        tapGestureRecognizer.numberOfTouchesRequired = 1 // numero de dedos en la pantalla
+        tapGestureRecognizer.addTarget(self, action: "rotate")
+        self.imageView.addGestureRecognizer(tapGestureRecognizer)
+        self.imageView.userInteractionEnabled = true
+
+    }
+    func rotate(){
+        let animation = CABasicAnimation()
+        animation.keyPath = "transform.rotation.x" // or y or z
+        animation.toValue = M_PI * 2.0
+        animation.duration = 1
+        animation.repeatCount = 2
+        self.imageView.layer.addAnimation(animation, forKey: "rotateAnimation")
     }
 
     func showItem(){
@@ -98,15 +141,27 @@ class DetailViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: ANIMACIONES
+    func fadeInDatePicker(){
+        self.datePicker.alpha = 0
+        self.datePicker.hidden = false
+        UIView.animateWithDuration(1){ () -> Void in
+            self.datePicker.alpha = 1
+            self.imageView.alpha = 0
+        }
     }
-    */
+    func fadeOutDatePicker(){
+        self.datePicker.alpha = 1
+        self.datePicker.hidden = false
+        UIView.animateWithDuration(1, animations: { () -> Void in
+            self.datePicker.alpha = 0
+            self.imageView.alpha = 1
+            }) { (completed) -> Void in
+                if completed {
+                    self.datePicker.hidden = true
+                }
+        }
+    }
 
 }
 
